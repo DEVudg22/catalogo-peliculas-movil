@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:catalogo_peliculas_movil/services/MovieService.dart';
-import 'package:catalogo_peliculas_movil/models/MovieModel.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -10,12 +9,9 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
-  late Future<List<MovieModel>> movies;
-
   @override
   void initState() {
     super.initState();
-    movies = MovieService().getMovies();
   }
 
   @override
@@ -41,8 +37,8 @@ class HomeState extends State<Home> {
       ),
 
       //Area donde se mostraran las peliculas
-      body: FutureBuilder<List<MovieModel>>(
-        future: movies,
+      body: FutureBuilder(
+        future: getMovies(),
         builder: (context, snap) {
           return ListView.builder(
             itemCount: snap.data?.length,
@@ -51,22 +47,26 @@ class HomeState extends State<Home> {
                 child: InkWell(
                   onTap: () {
                     Navigator.pushNamed(context, '/detalle');
-                    print('click');
                   },
                   child: Card(
                     color: Colors.blueGrey,
                     child: Column(
                       children: [
                         Image.network(
-                          'https://static.vecteezy.com/system/resources/previews/012/657/549/non_2x/illustration-negative-film-reel-roll-tapes-for-movie-cinema-video-logo-vector.jpg',
-                          width: 300,
-                          height: 225,
+                          snap.data?[i]['cover'],
+                          width: 225,
+                          height: 300,
                           fit: BoxFit.cover,
                         ),
                         Text(
-                          snap.data![i].name,
+                          snap.data?[i]['titulo'] +
+                              ' ' +
+                              '(' +
+                              snap.data?[i]['year'].toString() +
+                              ')',
+
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 15,
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.bold,
                             color: Colors.white54,

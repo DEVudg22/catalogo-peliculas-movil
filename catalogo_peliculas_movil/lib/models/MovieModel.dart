@@ -1,9 +1,26 @@
 class MovieModel {
-  int id;
-  String name;
-  MovieModel({required this.id, required this.name});
+  String id;
+  String titulo;
+  String sinopsis;
+  int year;
+  String cover;
 
-  factory MovieModel.fromJson(Map json) {
-    return MovieModel(id: json['id'], name: json['name']);
+  //constructor
+  MovieModel({
+    required this.id,
+    required this.titulo,
+    required this.sinopsis,
+    required this.year,
+    required this.cover,
+  });
+
+  Map<String, dynamic> toJSON() {
+    return {
+      'id': id,
+      'titulo': titulo,
+      'sinopsis': sinopsis,
+      'year': year,
+      'cover': cover,
+    };
   }
 }

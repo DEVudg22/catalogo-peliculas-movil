@@ -1,23 +1,16 @@
 import 'dart:async';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'package:catalogo_peliculas_movil/models/MovieModel.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class MovieService {
-  static const url = 'https://jsonplaceholder.typicode.com';
-  final String endPoint = '/users';
+FirebaseFirestore db = FirebaseFirestore.instance;
 
-  Future<List<MovieModel>> getMovies() async {
-    //respuesta en texto
-    final res = await http.get(Uri.parse('$url$endPoint'));
-    //conversion a lista
-    final obj = List.from(jsonDecode(res.body));
-    List<MovieModel> moviesList = [];
-    //Iteracion de la lista
-    obj.forEach((element) {
-      final MovieModel movie = MovieModel.fromJson(element as Map);
-      moviesList.add(movie);
-    });
-    return moviesList;
-  }
+Future<List> getMovies() async {
+  List movies = [];
+  CollectionReference collection = db.collection('movies');
+  QuerySnapshot queryMovies = await collection.get();
+
+  queryMovies.docs.forEach((document) {
+    movies.add(document.data());
+  });
+
+  return movies;
 }

@@ -1,0 +1,21 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "catalogo-peliculas-movil",
+          "appId": "1:236863296257:android:a83bda3e161097f6840100",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "catalogo-peliculas-movil",
+          "configurations": {
+            "android": "1:236863296257:android:a83bda3e161097f6840100"
+          }
+        }
+      }
+    }
+  }
+}
