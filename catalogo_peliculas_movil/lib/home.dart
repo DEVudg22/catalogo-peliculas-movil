@@ -25,13 +25,7 @@ class HomeState extends State<Home> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 154, 154, 154),
         title: Text('ES CINE -BETA-'),
-        actions: <Widget>[
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.search),
-            color: Colors.black,
-          ),
-        ],
+        actions: <Widget>[],
       ),
       drawer: Drawer(
         child: ListView(
