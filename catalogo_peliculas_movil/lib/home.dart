@@ -27,7 +27,13 @@ class HomeState extends State<Home> {
         child: ListView(
           children: <Widget>[
             DrawerHeader(child: Text('Menu')),
-            ListTile(title: Text('Agregar pelicula')),
+            ListTile(
+              title: Text('Agregar pelicula'),
+              onTap: () async {
+                await Navigator.pushNamed(context, '/crear');
+                setState(() {});
+              },
+            ),
             ListTile(
               title: Text('Salir'),
               onTap: () => Navigator.pushNamed(context, '/'),
@@ -45,8 +51,20 @@ class HomeState extends State<Home> {
             itemBuilder: (context, i) {
               return Center(
                 child: InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, '/detalle');
+                  onTap: () async {
+                    await Navigator.pushNamed(
+                      context,
+                      '/detalle',
+                      arguments: {
+                        "id": snap.data?[i]['id'],
+                        "titulo": snap.data?[i]['titulo'],
+                        "sinopsis": snap.data?[i]['sinopsis'],
+                        "year": snap.data?[i]['year'],
+                        "director": snap.data?[i]['director'],
+                        "genero": snap.data?[i]['genero'],
+                        "cover": snap.data?[i]['cover'],
+                      },
+                    );
                   },
                   child: Card(
                     color: Colors.blueGrey,

@@ -1,4 +1,6 @@
+import 'package:catalogo_peliculas_movil/crear.dart';
 import 'package:catalogo_peliculas_movil/detalle.dart';
+import 'package:catalogo_peliculas_movil/edit.dart';
 import 'package:catalogo_peliculas_movil/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:catalogo_peliculas_movil/home.dart';
@@ -23,6 +25,8 @@ class MyApp extends StatelessWidget {
         '/': (BuildContext context) => Welcome(),
         '/home': (BuildContext context) => Home(),
         '/detalle': (BuildContext context) => Detalle(),
+        '/crear': (BuildContext context) => Crear(),
+        '/editar': (BuildContext context) => Editar(),
       },
     );
   }
