@@ -26,9 +26,9 @@ class HomeState extends State<Home> {
       drawer: Drawer(
         child: ListView(
           children: <Widget>[
-            DrawerHeader(child: Text('Menu')),
+            DrawerHeader(child: Text('Menú', style: TextStyle(fontSize: 30))),
             ListTile(
-              title: Text('Agregar pelicula'),
+              title: Text('Agregar película'),
               onTap: () async {
                 await Navigator.pushNamed(context, '/crear');
                 setState(() {});
