@@ -20,7 +20,7 @@ class HomeState extends State<Home> {
       backgroundColor: const Color.fromARGB(221, 189, 194, 217),
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 154, 154, 154),
-        title: Text('ES CINE -BETA-'),
+        title: Text('ES CINE'),
         actions: <Widget>[],
       ),
       drawer: Drawer(
